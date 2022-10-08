@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>calculator</title>
+    <style>
+        .calc-ui{
+            width: 241px;
+            height: auto;
+            border: 1px solid brown;
+            margin: auto;
+            background-color:brown;
+            
+        }
+        .screen{
+            border: 2px solid brown;
+            height: 130px;
+            width: 233px;
+            background-color: white;
+        }
+        .screen:hover{
+            background-color: white;
+        }
+        input[type=button]{ 
+            height: 60px;
+            width: 45px;
+            color: white;
+            background-color: brown;
+            border: none;
+            font-weight: bolder;
+            font-size: x-large;
+        }
+        #equal{
+        font-weight: bolder;
+        color: #111;
+        font-size: xx-large;
+
+        }
+        #del{
+            color: #111;
+        }
+
+        input:hover{
+            background-color: gray;
+            color: rgb(243, 128, 147);
+        }
+    </style>
+</head>
+<body>
+    <div class="calc-ui">
+        <div>
+            <input class="screen" type="text" id="display" disabled>
+        </div>
+        <div class="key">
+            
+            <input type="button" value="9" onclick="insertNumber('9')">
+            <input type="button" value="8" onclick="insertNumber('8')">
+            <input type="button" value="7" onclick="insertNumber('7')">
+            <input type="button" value="+" onclick="insertOperator('+')">
+            
+           <br>
+            <input type="button" value="6" onclick="insertNumber('6')">
+            <input type="button" value="5" onclick="insertNumber('5')">
+            <input type="button" value="4" onclick="insertNumber('4')">
+            <input type="button" value="*" onclick="insertOperator('*')">
+            <input type="button" value="=" onclick="solve()" id="equal"><br>
+            <input type="button" value="3" onclick="insertNumber('3')">
+            <input type="button" value="2" onclick="insertNumber('2')">
+            <input type="button" value="1" onclick="insertNumber('1')">
+            <input type="button" value="-" onclick="insertOperator('-')">
+            <br>
+            <input type="button" value="." onclick="insertNumber('.')">
+            <input type="button" value="0" onclick="insertNumber('0')">
+            <input type="button" value="AC" onclick="del()" id="del">
+            <input type="button" value="/" onclick="insertOperator('/')">
+           
+        </div>
+    </div>
+
+    <script>
+       
+        let inputs = [];
+        let operators = [];
+        let current_input ="";
+        let counter = 0;
+        
+        
+         
+
+
+        const inputElement = document.getElementById('display');
+        function insertNumber(a){
+            // outputElement.append(a);
+            // current_input+=a;
+            inputElement.value+=a;
+        }
+
+        function insertOperator(b){
+            inputElement.value +=b;
+        }
+
+        function solve(){
+            //     current_input = outputElement.value;
+            // console.log(input)
+            //    }
+            inputElement.value = eval(inputElement.value);
+        }
+        function del(){
+            inputElement.value = inputElement.value.substring(0, inputElement.value.length -1);
+        }
+        
+    </script>
+</body>
+</html>
